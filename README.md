@@ -3,7 +3,9 @@
 User Insights System
 
 Programming Language Used: Python3.6
+
 How to run:
+
 Please verify/place the csv files in the ‘user_insights’ folder location.
 1.	Run the following command to build the docker from ‘user_insights’ directory.
 docker build -t "docker-flask"
