@@ -1,0 +1,25 @@
+#install ubuntu as base image
+From ubuntu:latest
+
+
+#installing python 3.6
+RUN apt-get install python3.6
+
+#installing pip3
+RUN apt install python3-pip
+
+
+#copying flask app modules which is in current directory to /opt
+RUN mkdir /opt/templates
+COPY . /opt
+COPY templates/* /opt/templates
+
+#to ignore ssl error and install packages in requirements.txt
+RUN python3 -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt 
+
+#exposing port to outside container
+EXPOSE 5000
+
+#for executing app.py in docker run
+ENTRYPOINT ["python3"]
+CMD ["/opt/app.py"]
